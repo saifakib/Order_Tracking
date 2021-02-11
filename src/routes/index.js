@@ -1,6 +1,7 @@
 const authRoute = require('../routes/authRoute')
 const sellerRoute = require('../routes/sellerRoute')
 const customerRoute = require('../routes/customerRoute')
+const ProductRoute = require('../routes/productRoute')
 
 const routes = [
     {
@@ -14,6 +15,10 @@ const routes = [
     {
         path: '/api/customer',
         handler: customerRoute
+    },
+    {
+        path: '/api',
+        handler: ProductRoute
     }
 ]
 

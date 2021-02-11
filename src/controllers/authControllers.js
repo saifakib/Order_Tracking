@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 exports.signUpPostController = async (req, res, next) => {
     const { name, email, password, type } = req.body;
@@ -46,9 +47,11 @@ exports.loginPostController = async (req, res, next) => {
                 message: 'Invalid Credential'
             })
         } else {
+            const token = jwt.sign({ email: user.email, _id: user._id }, "secret", { expiresIn: '3h' })
             res.status(200).json({
-                message: 'User Login',
-                user: user
+                message: 'Login Succesfull',
+                user: user,
+                token
             })
         }
     }

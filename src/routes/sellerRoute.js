@@ -1,9 +1,10 @@
 const router = require('express').Router()
-const sellerProduct = require('../controllers/sellerProductController')
+const sellerController = require('../controllers/sellerProductController')
+const { auth } = require('../middlewares')
 
-router.get('/products', sellerProduct.getSellerProduct)
-router.post('/create-product', sellerProduct.postSellerProduct)
-router.put('/pickup/:id')
-router.put('/deliver/:id')
+router.get('/order-product', auth, sellerController.getAllOrderProduct)
+router.post('/create-product', auth, sellerController.postSellerProduct)
+router.put('/pickup/:id', auth, sellerController.pickupProduct)
+router.put('/deliver/:id', auth, sellerController.deliverProduct)
 
 module.exports = router;

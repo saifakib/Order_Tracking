@@ -14,13 +14,7 @@ const userSchema = new Schema({
         type: String,
         trim: true,
         required: true,
-        unique: true,
-        validate: {
-            validator: (v) => {
-                return valid.isValid(v)
-            },
-            message: "${v} is not valid email"
-        }
+        unique: true
     },
     password: {
         type: String,
